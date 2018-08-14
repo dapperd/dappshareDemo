@@ -1,0 +1,222 @@
+/*Colors*/
+/*Fonts*/
+ body {
+	 background: linear-gradient(90deg, #b784ed, #7925ed);
+	 display: flex;
+	 justify-content: center;
+}
+ *, *::before, *::after {
+	 -webkit-box-sizing: border-box;
+	 -moz-box-sizing: border-box;
+	 -o-box-sizing: border-box;
+	 box-sizing: border-box;
+}
+/*Reset Heading*/
+ h2, h3, p {
+	 margin: 0;
+	 padding: 0;
+}
+ .hidden {
+	 display: none;
+}
+.banner {
+     font: 100 22px "Poppins", sans-serif;	
+	 display: flex;
+	 justify-content: center;
+}
+a {
+     font: 100 22px "Poppins", sans-serif;	
+}
+/* Start Style*/
+ .wrapper {
+	 width: 1000px;
+	 height: 600px;
+	 margin: 10px auto;
+	 display: grid;
+	 grid-template-columns: 1fr;
+	 grid-template-rows: 1fr 1fr;
+}
+ .wrapper .items-border {
+	 width: 400px;
+	 height: 100px;
+	 background: linear-gradient(to left, #acb1d9, #c4d3f0);
+	 margin: auto;
+	 border-radius: 15px;
+	 display: flex;
+	 justify-content: center;
+	 align-items: center;
+}
+ .wrapper .items-border .items-upload {
+	 width: 380px;
+	 height: 80px;
+	 border-radius: 15px;
+	 background: #fff;
+	 display: flex;
+	 justify-content: space-around;
+	 position: relative;
+}
+ .wrapper .items-border .items-upload .items {
+	 align-self: center;
+	 color: #7d8ace;
+	 cursor: pointer;
+	 width: 41px;
+	 height: 48px;
+	 position: relative;
+}
+ .wrapper .content {
+	 display: flex;
+	 justify-content: space-around;
+}
+ .wrapper .upload-border, .wrapper .files-border {
+	 width: 390px;
+	 height: 425px;
+	 background: linear-gradient(to left, #acb1d9, #c4d3f0);
+	 display: flex;
+	 justify-content: center;
+	 align-items: center;
+	 border-radius: 15px;
+	 overflow: hidden;
+}
+ .wrapper .upload-border .upload, .wrapper .files-border .upload {
+	 width: 360px;
+	 height: 400px;
+	 background: #fff;
+	 border-radius: 8px;
+	 display: flex;
+	 flex-direction: column;
+	 justify-content: center;
+	 align-items: center;
+}
+ .wrapper .upload-border .upload h3, .wrapper .files-border .upload h3 {
+	 margin-bottom: 30px;
+	 color: #616161;
+	 font: 100 22px "Poppins", sans-serif;
+}
+ .wrapper .upload-border .upload .plus, .wrapper .files-border .upload .plus {
+	 font-size: 40px;
+	 padding: 45px;
+	 border: 8px dashed #7d8ace;
+	 margin-bottom: 30px;
+	 color: #7d8ace;
+	 cursor: pointer;
+}
+ .wrapper .upload-border .upload .plus.bg-gray, .wrapper .files-border .upload .plus.bg-gray {
+	 background: #ddd;
+}
+ .wrapper .upload-border .upload span, .wrapper .files-border .upload span {
+	 color: #757575;
+	 font: 100 14px "Poppins", sans-serif;
+}
+ .wrapper .files {
+	 width: 360px;
+	 height: 400px;
+	 background: #fff;
+	 border-radius: 8px;
+	 padding: 25px;
+	 display: flex;
+	 flex-direction: column;
+	 justify-content: flex-start;
+	 align-items: flex-start;
+}
+ .wrapper .files__row {
+	 margin-bottom: 30px;
+	 position: relative;
+	 transition: all 0.5s ease;
+}
+ .wrapper .files__row.hidden {
+	 display: none;
+}
+ .wrapper .files__row.hold {
+	 border: none;
+}
+ .wrapper .files__row.invisible {
+	 display: none;
+}
+ .wrapper .files__row .content {
+	 display: grid;
+	 grid-template-columns: repeat(2, 1fr);
+	 margin-bottom: 15px;
+	 grid-gap: 10px;
+}
+ .wrapper .files__row .content .picture {
+	 grid-row: 0.3333333333;
+}
+ .wrapper .files__row .content .picture .image {
+	 color: #7d8ace;
+}
+ .wrapper .files__row .content .text {
+	 grid-column: -2;
+	 display: grid;
+	 grid-template-rows: repeat(2, 25px);
+	 grid-gap: 15px;
+}
+ .wrapper .files__row .content .text .status {
+	 display: flex;
+	 justify-content: space-between;
+}
+ .wrapper .files__row .content .text .status p {
+	 color: #717171;
+	 font: 100 14px "Poppins", sans-serif;
+}
+ .wrapper .files__row .content .text .status .check, .wrapper .files__row .content .text .status .false {
+	 position: relative;
+}
+ .wrapper .files__row .content .text .status .check {
+	 color: #bdf351;
+	 border-color: #bdf351;
+}
+ .wrapper .files__row .content .text .status .false {
+	 color: #a0a09e;
+	 cursor: pointer;
+}
+ .wrapper .files__row .content .text .progressbar {
+	 width: 95%;
+	 height: 5px;
+	 background: #ddd;
+	 border-radius: 15px;
+	 position: relative;
+}
+ .wrapper .files__row .content .text .progressbar .progressOrange, .wrapper .files__row .content .text .progressbar .progressGreen {
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 height: 5px;
+	 border-radius: 15px;
+}
+ .wrapper .files__row .content .text .progressGreen {
+	 background: #bdf351;
+	 width: 100%;
+}
+ .wrapper .files__row .content .text .progressOrange {
+	 background: #f18000;
+}
+ .wrapper .files__row .content .text .last-progress {
+	 background: #f18000;
+	 width: 1%;
+}
+ .wrapper .files__row .bar {
+	 width: 100%;
+	 height: 2px;
+	 background: #ddd;
+	 position: absolute;
+	 bottom: 15px;
+}
+ .wrapper .files__footer {
+	 width: 260px;
+	 height: 100px;
+	 display: flex;
+	 justify-content: center;
+	 align-items: flex-end;
+}
+ .wrapper .files__footer p {
+	 color: #a0a0a0;
+	 font: 100 14px "Poppins", sans-serif;
+}
+ @keyframes upwidth {
+	 from {
+		 width: 0;
+	}
+	 to {
+		 width: 100%;
+	}
+}

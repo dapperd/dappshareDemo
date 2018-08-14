@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>File Share</title>
+  <link rel="stylesheet" href="bootstrap.min.css" />
+  <link rel="stylesheet" href="app.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+
+  <script src="https://jimmywarting.github.io/StreamSaver.js/StreamSaver.js"></script> <!-- load before streams polyfill to detect support -->
+  <script src="https://cdn.rawgit.com/creatorrr/web-streams-polyfill/master/dist/polyfill.min.js"></script>
+  <script src="bundle.js"></script>
+  <script src="app.js"></script>
+</head>
+<body>
+  <div class="wrapper">
+
+    <div class="items-border">
+      <div class="items-upload">
+        <div class="banner" id="share_link">
+          DApp Share Demo
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="upload-border">
+        <form class="my-form">
+        <div class="upload" id="upload" style="">
+          <h3>Drop your files here</h3>
+          <i class="fa fa-plus plus" id="plus" aria-hidden="true"></i>
+          <span>Or click below</span>
+          <br/>
+          <input type="file" id="fileElem" multiple accept="*/*" onchange="window.app.handleFiles(this.files)">
+        </div>
+      </form>
+      </div>
+
+      <div class="files-border">
+        <div class="files" id="files">
+
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
