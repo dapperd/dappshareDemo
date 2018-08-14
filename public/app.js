@@ -71,8 +71,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
       uploadProgress[fileNumber] = percent
       let total = uploadProgress.reduce((tot, curr) => tot + curr, 0) / uploadProgress.length
       //update the progress bar ...
-      console.log(fileNumber)
-      console.log(document.getElementById("files").children[fileNumber])
       let text = document.getElementById("files").children[fileNumber].children[0].children[1]
       let status = text.children[0]
       let progress = text.children[1]
@@ -89,9 +87,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         progress.innerHTML = ''
         progress.appendChild(prog)
       }
-      
-      console.log(progress)
-      
+            
       //<div class="progressOrange first-progress"></div>
       //<div class="progressGreen first-progress"></div>
       
@@ -142,6 +138,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
       link.innerHTML = "click to copy"
       document.getElementById('share_link').innerHTML = "Share: ";
       document.getElementById('share_link').appendChild(link)
+      
+      const copyToClipboard = str => {
+        const el = document.createElement('textarea');
+        el.value = str;
+        el.setAttribute('readonly', '');
+        el.style.position = 'absolute';
+        el.style.left = '-9999px';
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+      };
+      
+      copyToClipboard(shareLink)
     }
     function updateManifest(idx, filename, size, chunks, type) {
       
