@@ -17,10 +17,12 @@
 
     <div class="items-border">
       <div class="items-upload">
-        <div class="banner" id="share_link">
-          DApp Share Demo
+          <div class="banner" id="share_link">
+            <h3>
+              <input type="checkbox" name="secureDrop" class="secureDrop" onclick="window.app.toggleSecureDrop()" value=1> Encrypted Drop 
+          </h3>
+          </div>
         </div>
-      </div>
     </div>
 
     <div class="content">
@@ -31,17 +33,18 @@
           <i class="fa fa-plus plus" id="plus" aria-hidden="true"></i>
           <span>Or click below</span>
           <br/>
-          <input type="file" id="fileElem" multiple accept="*/*" onchange="window.app.handleFiles(this.files)">
+          <input type="file" id="fileElem" multiple accept="*/*" onchange="window.app.handleFiles(this.files)"/>
+          </input>
+          
         </div>
       </form>
       </div>
 
       <div class="files-border">
         <div class="files" id="files">
-
-          
         </div>
       </div>
+      
     </div>
   </div>
 </body>

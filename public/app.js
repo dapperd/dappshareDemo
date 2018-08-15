@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       hdnode = hdnode.deriveHardened(counter)
       let privKeyHex = hdnode.keyPair.d.toBuffer(32).toString("hex")
       window.localStorage.setItem("blockstack", JSON.stringify({appPrivateKey: privKeyHex}))
-      return blockstack.getFile("f" + idx + "_" + counter)
+      return blockstack.getFile("f" + idx + "_" + counter, { decrypt: BaseData["e"] == true } )
     }
 
     async function uploadChunk(idx, counter, data) {
@@ -126,12 +126,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
       let privKeyHex = hdnode.keyPair.d.toBuffer(32).toString("hex")
       window.localStorage.setItem("blockstack", JSON.stringify({appPrivateKey: privKeyHex}))
       console.log("uploading chunk of sz "  + data.length)
-      await blockstack.putFile("f" + idx + "_" + counter, data, {encrypt: false} ).then( () => {
+      await blockstack.putFile("f" + idx + "_" + counter, data, {encrypt: (BaseData["e"] == true)} ).then( () => {
         //
       })
     }
     
     function updateShareLink() {
+      console.log(BaseData)
       shareLink = window.location.href.split("#")[0] + "#" + btoa(JSON.stringify(BaseData))
       let link = document.createElement('a')
       link.href = shareLink
@@ -170,7 +171,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
      function uploadFile(file, idx) {
       //do it in 2 MB chunks
-      let chunkLimit = 2*1024*1024;
+      let chunkLimit = 1*1024*1024;
       
       updateManifest(fileNumber, file.name, file.size, file.size / chunkLimit, file.type)
       fileListing.appendChild(makeRowEntry(fileNumber, BaseData.manifest[fileNumber]))
@@ -254,6 +255,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
           fileListing.appendChild(re)
         }
         dropArea.innerHTML = '<a href="">Click to start new upload</a>'
+        updateShareLink()
       } else {
         dropArea.style = ""
       }
@@ -312,9 +314,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
       row_entry.appendChild(bar)
       return row_entry;
     }
+    
+    function toggleSecureDrop() {
+      if (document.querySelector(".secureDrop:checked")) {
+        BaseData["e"] = true
+      } else {
+        BaseData["e"] = false
+      }
+    }
 
     listFiles()
     window.app = {}
     window.app.handleFiles = handleFiles
     window.app.downloadFile = downloadFile
+    window.app.toggleSecureDrop = toggleSecureDrop
 })
